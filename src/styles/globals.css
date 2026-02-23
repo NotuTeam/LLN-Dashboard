@@ -1,0 +1,903 @@
+/** @format */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+}
+
+* {
+  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif !important;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Custom Scrollbar Styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Global Placeholder Styles */
+::placeholder {
+  color: #9ca3af;
+  opacity: 1;
+}
+
+::placeholder:hover {
+  color: #6b7280;
+}
+
+::placeholder:focus {
+  color: #6b7280;
+}
+
+/* Input Placeholder */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+input:hover::placeholder,
+textarea:hover::placeholder {
+  color: #6b7280;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  color: #6b7280;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.game-container {
+  margin-top: 10vh;
+  transform: scale(3);
+}
+
+.ant-upload-wrapper .ant-upload-select {
+  width: 100%;
+}
+
+/* Ant Design Light Mode Placeholder */
+.ant-input::placeholder,
+.ant-input-number::placeholder,
+.ant-select-selection-placeholder {
+  color: #9ca3af !important;
+}
+
+.ant-input:hover::placeholder,
+.ant-input-number:hover::placeholder {
+  color: #6b7280 !important;
+}
+
+/* Ant Design Input Background */
+.ant-input,
+.ant-input-number,
+.ant-select-selector {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #1a1a1a !important;
+}
+
+.ant-input:hover,
+.ant-input-number:hover,
+.ant-select:hover .ant-select-selector {
+  background-color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+.ant-input:autofill,
+.ant-input-number:autofill {
+  background-color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+/* Browser Autofill Styles - Webkit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #1a1a1a;
+}
+
+/* Ant Design Autofill Styles */
+.ant-input:-webkit-autofill,
+.ant-input:-webkit-autofill:hover,
+.ant-input:-webkit-autofill:focus,
+.ant-input-number:-webkit-autofill,
+.ant-input-number:-webkit-autofill:hover,
+.ant-input-number:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.ant-input-textarea textarea:-webkit-autofill,
+.ant-input-textarea textarea:-webkit-autofill:hover,
+.ant-input-textarea textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Firefox Autofill */
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus,
+textarea:-moz-autofill,
+textarea:-moz-autofill:hover,
+textarea:-moz-autofill:focus {
+  -moz-text-fill-color: #1a1a1a !important;
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+/* Additional autofill targeting for all inputs */
+input[autofill],
+input[autocomplete],
+input[type="text"]:autofill,
+input[type="password"]:autofill,
+input[type="email"]:autofill,
+input[type="username"]:autofill {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+/* Force remove autofill background for all states */
+*:-webkit-autofill,
+*:-webkit-autofill:hover,
+*:-webkit-autofill:focus,
+*:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  -webkit-text-fill-color: #1a1a1a !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: #ffffff !important;
+}
+
+
+.ant-input:focus,
+.ant-input-number:focus,
+.ant-select-focused .ant-select-selector {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 2px rgba(193, 3, 2, 0.1) !important;
+}
+
+.ant-input-outlined:focus-within, .ant-input-outlined:focus{
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 2px rgba(193, 3, 2, 0.1) !important;
+}
+
+/* Ant Design Input Status Error */
+.ant-input-status-error,
+.ant-input-status-error:not(.ant-input-disabled),
+.ant-input-outlined.ant-input-status-error,
+.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled),
+.ant-input-affix-wrapper-status-error,
+.ant-input-affix-wrapper-status-error:not(.ant-input-disabled),
+.ant-input-affix-wrapper-outlined.ant-input-status-error,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:not(.ant-input-disabled) {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.ant-input-status-error:hover,
+.ant-input-status-error:not(.ant-input-disabled):hover,
+.ant-input-outlined.ant-input-status-error:hover,
+.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled):hover,
+.ant-input-affix-wrapper-status-error:hover,
+.ant-input-affix-wrapper-status-error:not(.ant-input-disabled):hover,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:hover,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:not(.ant-input-disabled):hover {
+  background-color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+.ant-input-status-error:focus,
+.ant-input-status-error:not(.ant-input-disabled):focus,
+.ant-input-outlined.ant-input-status-error:focus,
+.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled):focus,
+.ant-input-affix-wrapper-status-error:focus,
+.ant-input-affix-wrapper-status-error:not(.ant-input-disabled):focus,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:focus,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:not(.ant-input-disabled):focus,
+.ant-input-affix-wrapper-focused.ant-input-affix-wrapper-status-error,
+.ant-input-affix-wrapper-focused.ant-input-affix-wrapper-status-error:not(.ant-input-disabled) {
+  background-color: #ffffff !important;
+  border-color: #C10302 !important;
+  box-shadow: 0 0 0 2px rgba(193, 3, 2, 0.1) !important;
+}
+
+/* Error state with autofill */
+.ant-input-status-error:-webkit-autofill,
+.ant-input-status-error:not(.ant-input-disabled):-webkit-autofill,
+.ant-input-outlined.ant-input-status-error:-webkit-autofill,
+.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled):-webkit-autofill,
+.ant-input-affix-wrapper-status-error:-webkit-autofill,
+.ant-input-affix-wrapper-status-error:not(.ant-input-disabled):-webkit-autofill,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:-webkit-autofill,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:not(.ant-input-disabled):-webkit-autofill {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: #ffffff !important;
+}
+
+.ant-input-status-error input:-webkit-autofill,
+.ant-input-status-error:not(.ant-input-disabled) input:-webkit-autofill,
+.ant-input-outlined.ant-input-status-error input:-webkit-autofill,
+.ant-input-outlined.ant-input-status-error:not(.ant-input-disabled) input:-webkit-autofill,
+.ant-input-affix-wrapper-status-error input:-webkit-autofill,
+.ant-input-affix-wrapper-status-error:not(.ant-input-disabled) input:-webkit-autofill,
+.ant-input-affix-wrapper-outlined.ant-input-status-error input:-webkit-autofill,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:not(.ant-input-disabled) input:-webkit-autofill {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: #ffffff !important;
+}
+
+/* Input Status Error - Inner Input */
+.ant-input-affix-wrapper-status-error .ant-input,
+.ant-input-affix-wrapper-status-error:not(.ant-input-disabled) .ant-input,
+.ant-input-affix-wrapper-outlined.ant-input-status-error .ant-input,
+.ant-input-affix-wrapper-outlined.ant-input-status-error:not(.ant-input-disabled) .ant-input {
+  background-color: transparent !important;
+}
+
+/* Ant Design DatePicker Light Mode */
+.ant-picker {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.ant-picker:hover {
+  background-color: #ffffff !important;
+}
+
+.ant-picker-input > input {
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+.ant-picker-input > input:hover {
+  background-color: #ffffff !important;
+}
+
+.ant-picker-input > input::placeholder {
+  color: #9ca3af !important;
+}
+
+.ant-picker-input > input:-webkit-autofill,
+.ant-picker-input > input:-webkit-autofill:hover,
+.ant-picker-input > input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.ant-picker-input > input:autofill {
+  color: #1a1a1a !important;
+  background-color: #ffffff !important;
+}
+
+/* Ant Design TextArea */
+.ant-input-textarea textarea {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #1a1a1a !important;
+}
+
+.ant-input-textarea:hover textarea {
+  background-color: #ffffff !important;
+}
+
+.ant-input-textarea textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Ant Design Checkbox */
+.ant-checkbox-wrapper {
+  color: #1a1a1a !important;
+}
+
+.ant-checkbox-inner {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+/* Ant Design Radio */
+.ant-radio-wrapper {
+  color: #1a1a1a !important;
+}
+
+.ant-input-affix-wrapper .anticon.ant-input-password-icon{
+  color: #9ca3af !important;
+}
+
+/* Ant Design Input Affix Wrapper (for password fields) */
+.ant-input-affix-wrapper,
+.ant-input-affix-wrapper-outlined {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper-outlined:hover {
+  background-color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+.ant-input-affix-wrapper-focused,
+.ant-input-affix-wrapper-outlined-focused {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 2px rgba(193, 3, 2, 0.1) !important;
+}
+
+.ant-input-affix-wrapper:-webkit-autofill,
+.ant-input-affix-wrapper:-webkit-autofill:hover,
+.ant-input-affix-wrapper:-webkit-autofill:focus,
+.ant-input-affix-wrapper-outlined:-webkit-autofill,
+.ant-input-affix-wrapper-outlined:-webkit-autofill:hover,
+.ant-input-affix-wrapper-outlined:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.ant-input-affix-wrapper input:-webkit-autofill,
+.ant-input-affix-wrapper input:-webkit-autofill:hover,
+.ant-input-affix-wrapper input:-webkit-autofill:focus,
+.ant-input-affix-wrapper-outlined input:-webkit-autofill,
+.ant-input-affix-wrapper-outlined input:-webkit-autofill:hover,
+.ant-input-affix-wrapper-outlined input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Target the actual input inside affix wrapper more specifically */
+.ant-input-affix-wrapper > input:autofill,
+.ant-input-affix-wrapper > input:-webkit-autofill,
+.ant-input-affix-wrapper > input:-webkit-autofill:hover,
+.ant-input-affix-wrapper > input:-webkit-autofill:focus,
+.ant-input-affix-wrapper-outlined > input:autofill,
+.ant-input-affix-wrapper-outlined > input:-webkit-autofill,
+.ant-input-affix-wrapper-outlined > input:-webkit-autofill:hover,
+.ant-input-affix-wrapper-outlined > input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: #ffffff !important;
+}
+
+.ant-input-affix-wrapper .ant-input,
+.ant-input-affix-wrapper-outlined .ant-input {
+  background-color: transparent !important;
+}
+
+.ant-input-affix-wrapper .ant-input:-webkit-autofill,
+.ant-input-affix-wrapper-outlined .ant-input:-webkit-autofill {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Ant Design Password Input */
+.ant-input-password {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.ant-input-password:hover {
+  background-color: #ffffff !important;
+  border-color: #9ca3af !important;
+}
+
+.ant-input-password input:-webkit-autofill,
+.ant-input-password input:-webkit-autofill:hover,
+.ant-input-password input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #1a1a1a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.ant-radio-inner {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+/* Ant Design Switch */
+.ant-switch {
+  background-color: #d1d5db !important;
+}
+
+/* Ant Design Select Dropdown */
+.ant-select-dropdown {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.ant-select-item {
+  color: #1a1a1a !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: rgba(193, 3, 2, 0.1) !important;
+}
+
+.ant-select-item-option-active {
+  background-color: #f3f4f6 !important;
+  color: #1a1a1a !important;
+}
+
+/* Ant Design DatePicker Dropdown */
+.ant-picker-dropdown {
+  background-color: #ffffff !important;
+}
+
+.ant-picker-panel-container {
+  background-color: #ffffff !important;
+}
+
+.ant-picker-header {
+  color: #1a1a1a !important;
+  border-bottom-color: #e5e7eb !important;
+}
+
+.ant-picker-cell {
+  color: #6b7280 !important;
+}
+
+.ant-picker-cell-in-view {
+  color: #1a1a1a !important;
+}
+
+.ant-picker-cell:hover:not(.ant-picker-cell-selected) .ant-picker-cell-inner {
+  background-color: #f3f4f6 !important;
+}
+
+.ant-picker-cell-selected .ant-picker-cell-inner {
+  background-color: #C10302 !important;
+}
+
+/* Ant Design TimePicker */
+.ant-picker-time-panel-column {
+  color: #1a1a1a !important;
+}
+
+.ant-picker-time-panel-cell-inner {
+  color: #6b7280 !important;
+}
+
+.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+  background-color: rgba(193, 3, 2, 0.1) !important;
+  color: #C10302 !important;
+}
+
+/* Grid System for Dynamic Pages */
+
+/* Ensure proper grid display */
+.dynamic-page-content {
+  width: 100%;
+}
+
+.dynamic-page-content .grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* Column span classes */
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+.col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+.col-span-4 {
+  grid-column: span 4 / span 4;
+}
+.col-span-5 {
+  grid-column: span 5 / span 5;
+}
+.col-span-6 {
+  grid-column: span 6 / span 6;
+}
+.col-span-7 {
+  grid-column: span 7 / span 7;
+}
+.col-span-8 {
+  grid-column: span 8 / span 8;
+}
+.col-span-9 {
+  grid-column: span 9 / span 9;
+}
+.col-span-10 {
+  grid-column: span 10 / span 10;
+}
+.col-span-11 {
+  grid-column: span 11 / span 11;
+}
+.col-span-12 {
+  grid-column: span 12 / span 12;
+}
+
+/* Responsive breakpoints */
+@media (min-width: 768px) {
+  .md\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+  .md\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+  .md\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+  .md\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+  .md\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+  .md\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+  .md\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+  .md\:col-span-9 {
+    grid-column: span 9 / span 9;
+  }
+  .md\:col-span-10 {
+    grid-column: span 10 / span 10;
+  }
+  .md\:col-span-11 {
+    grid-column: span 11 / span 11;
+  }
+  .md\:col-span-12 {
+    grid-column: span 12 / span 12;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+  .lg\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+  .lg\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+  .lg\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+  .lg\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+  .lg\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+  .lg\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+  .lg\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+  .lg\:col-span-9 {
+    grid-column: span 9 / span 9;
+  }
+  .lg\:col-span-10 {
+    grid-column: span 10 / span 10;
+  }
+  .lg\:col-span-11 {
+    grid-column: span 11 / span 11;
+  }
+  .lg\:col-span-12 {
+    grid-column: span 12 / span 12;
+  }
+}
+
+/* Page Editor specific styles */
+.page-editor-canvas .grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+/* Drag and drop visual feedback */
+.drag-over {
+  border-top: 4px solid #4f46e5;
+  padding-top: 1rem;
+}
+
+.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+/* Component wrapper styling */
+.component-wrapper {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.component-wrapper:hover {
+  transform: scale(1.01);
+}
+
+.component-wrapper.selected {
+  box-shadow: 0 0 0 2px #4f46e5;
+  border-radius: 0.5rem;
+}
+
+/* Smooth transitions */
+.transition-layout {
+  transition: grid-column 0.3s ease, width 0.3s ease;
+}
+
+/* Mobile-first approach */
+@media (max-width: 767px) {
+  .dynamic-page-content .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dynamic-page-content [class*="col-span-"] {
+    grid-column: span 12 / span 12;
+  }
+}
+
+/* Ensure images are responsive */
+.dynamic-page-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Button styling consistency */
+.dynamic-page-content button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.dynamic-page-content button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* List styling */
+.dynamic-page-content ul,
+.dynamic-page-content ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.dynamic-page-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Heading hierarchy */
+.dynamic-page-content h1,
+.dynamic-page-content h2,
+.dynamic-page-content h3,
+.dynamic-page-content h4,
+.dynamic-page-content h5,
+.dynamic-page-content h6 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Text content spacing */
+.dynamic-page-content p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Background image handling */
+.bg-image-wrapper {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.bg-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  z-index: -1;
+}
+
+/* Quill Editor Light Theme */
+.quill {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.quill .ql-toolbar {
+  background-color: #f9fafb !important;
+  border-color: #d1d5db !important;
+  border-bottom: 1px solid #d1d5db !important;
+}
+
+.quill .ql-stroke {
+  stroke: #6b7280 !important;
+}
+
+.quill .ql-fill {
+  fill: #6b7280 !important;
+}
+
+.quill .ql-container {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #1a1a1a !important;
+  font-size: 16px;
+}
+
+.quill .ql-editor {
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+  min-height: 400px;
+}
+
+.quill .ql-editor.ql-blank::before {
+  color: #9ca3af !important;
+  font-style: normal;
+}
+
+.quill .ql-editor p {
+  color: #1a1a1a !important;
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+.quill .ql-editor h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #1a1a1a !important;
+}
+
+.quill .ql-editor h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #1a1a1a !important;
+}
+
+.quill .ql-editor h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: #1a1a1a !important;
+}
+
+.quill .ql-editor a {
+  color: #C10302 !important;
+  text-decoration: underline;
+}
+
+.quill .ql-editor ul,
+.quill .ql-editor ol {
+  color: #1a1a1a !important;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.quill .ql-editor li {
+  color: #1a1a1a !important;
+  margin-bottom: 0.25em;
+}
+
+.quill .ql-editor ul {
+  list-style-type: disc;
+}
+
+.quill .ql-editor ol {
+  list-style-type: decimal;
+}
+
+.quill .ql-editor blockquote {
+  border-left: 4px solid #d1d5db !important;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #6b7280 !important;
+  font-style: italic;
+}
+
+.quill .ql-editor pre {
+  background-color: #f3f4f6 !important;
+  color: #1a1a1a !important;
+  padding: 1em;
+  border-radius: 0.5em;
+  margin-bottom: 1em;
+  overflow-x: auto;
+}
+
+.quill .ql-editor code {
+  background-color: #f3f4f6 !important;
+  color: #1a1a1a !important;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25em;
+  font-family: monospace;
+}
+
+.quill .ql-toolbar button:hover,
+.quill .ql-toolbar button.ql-active {
+  background-color: #e5e7eb !important;
+}
+
+.quill .ql-toolbar .ql-picker-label:hover,
+.quill .ql-toolbar .ql-picker-label.ql-active {
+  background-color: #e5e7eb !important;
+}
+
+.quill .ql-toolbar .ql-picker-options {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+}
+
+.quill .ql-toolbar .ql-picker-item {
+  color: #1a1a1a !important;
+}
+
+.quill .ql-toolbar .ql-picker-item:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.quill .ql-toolbar .ql-picker-item.ql-selected {
+  background-color: #C10302 !important;
+  color: #ffffff !important;
+}
