@@ -49,7 +49,7 @@ export default function LoginPage() {
         }}
         className="w-1/2 h-[100dvh]"
       ></div>
-      <div className="w-1/2 p-10 flex items-center justify-center flex-col">
+      <div className="w-1/2 p-10 flex items-center justify-center flex-col max-h-[100dvh]">
         {/* Login Form */}
         <div className="p-8 w-[80%]">
           <Form
