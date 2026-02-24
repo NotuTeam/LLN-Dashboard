@@ -270,45 +270,120 @@ export default function OrdersPage() {
         </button>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        <div className="bg-white rounded-xl p-4 border border-gray-200">
+      {/* Stats - Clickable to Filter */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div
+          onClick={() =>
+            setStatusFilter(statusFilter === "pending" ? "" : "pending")
+          }
+          className={`rounded-xl p-4 border cursor-pointer transition-all duration-200 ${
+            statusFilter === "pending"
+              ? "bg-yellow-50 border-yellow-400 ring-2 ring-yellow-400"
+              : "bg-white border-gray-200 hover:border-yellow-300 hover:bg-yellow-50/50"
+          }`}
+        >
           <p className="text-sm text-gray-600">Menunggu Bayar</p>
           <p className="text-2xl font-bold text-yellow-600">
             {stats.pending || 0}
           </p>
+          {statusFilter === "pending" && (
+            <p className="text-xs text-yellow-600 mt-1">Aktif</p>
+          )}
         </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-200">
+
+        <div
+          onClick={() => setStatusFilter(statusFilter === "paid" ? "" : "paid")}
+          className={`rounded-xl p-4 border cursor-pointer transition-all duration-200 ${
+            statusFilter === "paid"
+              ? "bg-blue-50 border-blue-400 ring-2 ring-blue-400"
+              : "bg-white border-gray-200 hover:border-blue-300 hover:bg-blue-50/50"
+          }`}
+        >
           <p className="text-sm text-gray-600">Sudah Bayar</p>
           <p className="text-2xl font-bold text-blue-600">{stats.paid || 0}</p>
+          {statusFilter === "paid" && (
+            <p className="text-xs text-blue-600 mt-1">Aktif</p>
+          )}
         </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-200">
+
+        <div
+          onClick={() =>
+            setStatusFilter(statusFilter === "confirmed" ? "" : "confirmed")
+          }
+          className={`rounded-xl p-4 border cursor-pointer transition-all duration-200 ${
+            statusFilter === "confirmed"
+              ? "bg-green-50 border-green-400 ring-2 ring-green-400"
+              : "bg-white border-gray-200 hover:border-green-300 hover:bg-green-50/50"
+          }`}
+        >
           <p className="text-sm text-gray-600">Terkonfirmasi</p>
           <p className="text-2xl font-bold text-green-600">
             {stats.confirmed || 0}
           </p>
+          {statusFilter === "confirmed" && (
+            <p className="text-xs text-green-600 mt-1">Aktif</p>
+          )}
         </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-200">
+
+        <div
+          onClick={() =>
+            setStatusFilter(statusFilter === "queued" ? "" : "queued")
+          }
+          className={`rounded-xl p-4 border cursor-pointer transition-all duration-200 ${
+            statusFilter === "queued"
+              ? "bg-purple-50 border-purple-400 ring-2 ring-purple-400"
+              : "bg-white border-gray-200 hover:border-purple-300 hover:bg-purple-50/50"
+          }`}
+        >
           <p className="text-sm text-gray-600">Dalam Antrian</p>
           <p className="text-2xl font-bold text-purple-600">
             {stats.queued || 0}
           </p>
+          {statusFilter === "queued" && (
+            <p className="text-xs text-purple-600 mt-1">Aktif</p>
+          )}
         </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-200">
+
+        <div
+          onClick={() =>
+            setStatusFilter(statusFilter === "loading" ? "" : "loading")
+          }
+          className={`rounded-xl p-4 border cursor-pointer transition-all duration-200 ${
+            statusFilter === "loading"
+              ? "bg-orange-50 border-orange-400 ring-2 ring-orange-400"
+              : "bg-white border-gray-200 hover:border-orange-300 hover:bg-orange-50/50"
+          }`}
+        >
           <p className="text-sm text-gray-600">Sedang Dimuat</p>
           <p className="text-2xl font-bold text-orange-600">
             {stats.loading || 0}
           </p>
+          {statusFilter === "loading" && (
+            <p className="text-xs text-orange-600 mt-1">Aktif</p>
+          )}
         </div>
-        <div className="bg-white rounded-xl p-4 border border-gray-200">
+
+        <div
+          onClick={() =>
+            setStatusFilter(statusFilter === "completed" ? "" : "completed")
+          }
+          className={`rounded-xl p-4 border cursor-pointer transition-all duration-200 ${
+            statusFilter === "completed"
+              ? "bg-gray-100 border-gray-400 ring-2 ring-gray-400"
+              : "bg-white border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+          }`}
+        >
           <p className="text-sm text-gray-600">Selesai</p>
-          <p className="text-2xl font-bold text-gray-600">
+          <p className="text-2xl font-bold text-gray-700">
             {stats.completed || 0}
           </p>
+          {statusFilter === "completed" && (
+            <p className="text-xs text-gray-600 mt-1">Aktif</p>
+          )}
         </div>
       </div>
 
-      {/* Filters */}
+      {/* Search Only - No Dropdown */}
       <div className="bg-white rounded-2xl p-6 border border-gray-200">
         <div className="flex items-center gap-4">
           <div className="flex-1 relative">
@@ -320,20 +395,29 @@ export default function OrdersPage() {
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent bg-gray-100 text-gray-900"
             />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm("")}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-700"
+              >
+                ✕
+              </button>
+            )}
           </div>
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-xl bg-gray-100 text-gray-900"
-          >
-            <option value="">Semua Status</option>
-            <option value="pending">Menunggu Bayar</option>
-            <option value="paid">Sudah Bayar</option>
-            <option value="confirmed">Terkonfirmasi</option>
-            <option value="queued">Dalam Antrian</option>
-            <option value="loading">Sedang Dimuat</option>
-            <option value="completed">Selesai</option>
-          </select>
+
+          {/* Active Filter Badge */}
+          {statusFilter && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-600">Filter:</span>
+              <button
+                onClick={() => setStatusFilter("")}
+                className="flex items-center gap-1 px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium hover:bg-primary-200 transition-colors"
+              >
+                {statusLabels[statusFilter]}
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
@@ -769,9 +853,9 @@ export default function OrdersPage() {
               )}
 
               {selectedOrder.queue_number && (
-                <div className="p-4 bg-purple-50 rounded-xl">
-                  <p className="text-sm text-purple-600">Nomor Antrian</p>
-                  <p className="text-3xl font-bold text-purple-700">
+                <div className="p-4 bg-green-50 rounded-xl">
+                  <p className="text-sm text-green-600">Nomor Antrian</p>
+                  <p className="text-3xl font-bold text-green-700">
                     {selectedOrder.queue_number}
                   </p>
                 </div>

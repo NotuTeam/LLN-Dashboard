@@ -98,7 +98,10 @@ export default function OrderDetailPage() {
     },
     onSuccess: () => {
       Notification("success", "Barcode berhasil di-scan");
-      setShowScanModal(false);
+      // Delay closing modal to ensure camera is stopped
+      setTimeout(() => {
+        setShowScanModal(false);
+      }, 100);
       queryClient.invalidateQueries({ queryKey: ["order", id] });
       queryClient.invalidateQueries({ queryKey: ["orders"] });
       queryClient.invalidateQueries({ queryKey: ["queue"] });
@@ -109,6 +112,7 @@ export default function OrderDetailPage() {
         "error",
         err?.response?.data?.message || "Gagal scan barcode",
       );
+      // Don't close modal on error - let user retry
     },
   });
 
@@ -207,7 +211,7 @@ export default function OrderDetailPage() {
           label: "Batalkan",
           icon: X,
           action: () => cancelOrder.mutate(),
-          color: "bg-red-600",
+          color: "bg-white border-red-600 border !text-red-600",
         });
         break;
       case "paid":
@@ -221,7 +225,7 @@ export default function OrderDetailPage() {
           label: "Tolak",
           icon: X,
           action: () => setShowRejectModal(true),
-          color: "bg-red-600",
+          color: "bg-white border-red-600 border !text-red-600",
         });
         break;
       case "confirmed":
@@ -340,7 +344,9 @@ export default function OrderDetailPage() {
         <div className="lg:col-span-2 space-y-4">
           {/* Sales Info */}
           <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <h2 className="font-medium text-gray-900 mb-4">Informasi Sales</h2>
+            <h2 className="text-primary-600 mb-4 font-semibold">
+              Informasi Sales
+            </h2>
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
                 <User className="w-6 h-6 text-primary-600" />
@@ -353,17 +359,35 @@ export default function OrderDetailPage() {
           </div>
 
           {/* Product Info */}
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
-            <h2 className="font-medium text-gray-900 mb-4">Informasi Produk</h2>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <Package className="w-6 h-6 text-blue-600" />
+          <div className="bg-white rounded-xl p-6 border border-gray-200 gap-5 flex flex-col">
+            <h2 className="font-semibold text-primary-600">Informasi Produk</h2>
+            {order?.items?.map((item: any) => (
+              <div
+                key={item?.product?.product_id}
+                className="flex items-center gap-4"
+              >
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Package className="w-6 h-6 text-blue-600" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-medium">{item?.product_name}</p>
+                  <p className="text-sm text-gray-500">
+                    x {item.quantity} {item.product?.unit}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className="font-medium text-gray-500 text-sm">
+                    Rp {item?.product?.price?.toLocaleString()}
+                  </p>
+                  <p className="font-medium text-primary-600">
+                    Rp {item.subtotal?.toLocaleString()}
+                  </p>
+                </div>
               </div>
+            ))}
+            <div className="flex items-center gap-4 mt-3">
               <div className="flex-1">
-                <p className="font-medium">{order.product?.name}</p>
-                <p className="text-sm text-gray-500">
-                  {order.quantity} {order.product?.unit}
-                </p>
+                <p className="font-bold text-primary-600">Total</p>
               </div>
               <div className="text-right">
                 <p className="font-bold text-primary-600">
@@ -376,7 +400,7 @@ export default function OrderDetailPage() {
           {/* Driver Info */}
           {order.driver_name && (
             <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h2 className="font-medium text-gray-900 mb-4">
+              <h2 className="font-semibold text-primary-600 mb-4">
                 Informasi Driver
               </h2>
               <div className="grid grid-cols-3 gap-4">
@@ -393,13 +417,22 @@ export default function OrderDetailPage() {
                   <p className="font-medium">{order.vehicle_plate}</p>
                 </div>
               </div>
+              {order?.vehicle_photo?.url && (
+                <div className="mt-5">
+                  <img
+                    src={order?.vehicle_photo?.url}
+                    alt="Bukti Pembayaran"
+                    className="max-w-md rounded-lg"
+                  />
+                </div>
+              )}
             </div>
           )}
 
           {/* Payment Proof */}
           {order.payment_proof && (
             <div className="bg-white rounded-xl p-6 border border-gray-200">
-              <h2 className="font-medium text-gray-900 mb-4">
+              <h2 className="font-semibold text-primary-600 mb-4">
                 Bukti Pembayaran
               </h2>
               <img
@@ -420,18 +453,43 @@ export default function OrderDetailPage() {
 
           {/* Queue Info */}
           {order.queue_number && (
-            <div className="bg-purple-50 rounded-xl p-6 border border-purple-200">
+            <div className="bg-green-50 rounded-xl p-6 border border-green-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-purple-600">Nomor Antrian</p>
-                  <p className="text-4xl font-bold text-purple-700">
+                  <p className="text-sm text-green-600">Nomor Antrian</p>
+                  <p className="text-4xl font-bold text-green-700">
                     #{order.queue_number}
                   </p>
                 </div>
                 {order.estimated_time && (
-                  <div className="flex items-center gap-2 text-purple-600">
+                  <div className="flex items-center gap-2 text-green-600">
                     <Clock className="w-5 h-5" />
                     <span>Est: {order.estimated_time}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Delivery Note Info */}
+          {order.delivery_note_number && (
+            <div className="bg-green-50 rounded-xl p-6 border border-green-200">
+              <h2 className="font-semibold text-green-700 mb-4">Surat Jalan</h2>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-green-600">No. Surat Jalan</span>
+                  <span className="font-bold text-green-700 text-lg">
+                    {order.delivery_note_number}
+                  </span>
+                </div>
+                {order.delivery_note_at && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-green-600">Diterbitkan</span>
+                    <span className="text-green-700">
+                      {dayjs(order.delivery_note_at).format(
+                        "DD MMM YYYY, HH:mm",
+                      )}
+                    </span>
                   </div>
                 )}
               </div>

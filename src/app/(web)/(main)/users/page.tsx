@@ -188,7 +188,7 @@ export default function UsersPage() {
                 ) : (
                   data.map((user: any) => (
                     <tr
-                      key={user._id}
+                      key={user.id}
                       className="hover:bg-gray-100 transition-colors !border-slate-200"
                     >
                       <td className="py-4 px-6">
@@ -428,7 +428,7 @@ export default function UsersPage() {
               </button>
               <button
                 type="button"
-                onClick={() => handleDeleteUser(selectedUser?._id)}
+                onClick={() => handleDeleteUser(selectedUser?.id)}
                 className="flex-1 px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={deletePending}
               >

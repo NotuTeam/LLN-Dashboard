@@ -194,11 +194,11 @@ export default function Sidebar() {
             <div className="flex gap-3 items-center">
               <div
                 onClick={() => setIsCollapsed(false)}
-                className="w-10 h-10 p-2 bg-primary-600 rounded-xl flex items-center justify-center cursor-pointer"
+                className="w-10 h-10 flex items-center justify-center cursor-pointer"
               >
                 <Image
-                  src="/logo-simple.png"
-                  alt="logo-simple"
+                  src="/logo-bgn.png"
+                  alt="logo-bgn"
                   width={100}
                   height={100}
                 />

@@ -42,7 +42,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center min-w-full">
       <div
         style={{
-          backgroundImage: `url('https://res.cloudinary.com/dyn73qnjx/image/upload/v1770611979/Untitled_1_nqfsht.png'), url('./banner.webp')`,
+          backgroundImage: `url('https://res.cloudinary.com/dm1iagszk/image/upload/v1771821149/ruchindra-gunasekara-GK8x_XCcDZg-unsplash_gspk02.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "50%",
           backgroundRepeat: "no-repeat",
@@ -61,12 +61,17 @@ export default function LoginPage() {
           >
             <div className="flex items-center justify-center mt-5 mb-10">
               <Image
-                src="/logo-colored.png"
-                alt="logo"
-                width={350}
+                src="/logo-bgn.png"
+                alt="logo-bgn"
+                width={200}
                 height={200}
               />
             </div>
+            {/* <div className="flex items-center justify-center mt-5 mb-10">
+              <span className="bg-primary-600 text-white p-5 text-2xl font-[600] rounded-3xl">
+                LN
+              </span>
+            </div> */}
             <InputForm
               type="text"
               name="username"

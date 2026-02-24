@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "CMS LabaLaba",
   description: "[INTERNAL USAGE] Content Management System (CMS)",
   icons: {
-    icon: "/logo-simple.png",
+    icon: "/logo-bgn.png",
   },
 };
 
